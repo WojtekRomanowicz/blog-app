@@ -1,5 +1,7 @@
 package com.example.blogapp.model.jpa;
 
+import com.example.blogapp.constants.PgArrayType;
+import com.example.blogapp.constants.PgEnumType;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.Type;
@@ -23,13 +25,13 @@ public class Post implements Serializable {
     private String title;
     private String content;
 
-    @Type(type = "com.example.blog_app.constants.PgArrayType")
+    @Type(value = "com.example.blog_app.constants.PgArrayType")
     private String[] tags;
 
     @Column(name = "post_status")
-    @Type(type = "com.example.blog_app.constants.PgEnumType",
+    @Type(value = "com.example.blog_app.constants.PgEnumType",
             parameters = {@org.hibernate.annotations.Parameter(name = "enumClassName",
-                    value = "com.example.blog_app.model.jpa.PostStatus")})
+                    value = "com.example.blogapp.model.jpa.PostStatus")})
     PostStatus postStatus;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

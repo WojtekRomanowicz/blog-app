@@ -20,6 +20,7 @@ Create table if not exists blog (
 create table if not exists post (
     id serial primary key not null,
     blog_id int,
+    tags varchar[],
     title varchar(150),
     content text,
     "user" int,
@@ -47,5 +48,6 @@ create table file (id bigserial not null, name
                       varchar(255), primary key (id));
 create table post_files (post_id int8 not null, file_id
                                  int8 not null, primary key (file_id, post_id));
+
 
 
